@@ -1,4 +1,9 @@
 .wrapper {
+    --search-border-radius: 92px;
+    --search-height: 46px;
+    --search-btn-width: 52px;
+    --search-input-padding: 12px;
+
     width: 100%;
     height: var(--default-layout-header-height);
     box-shadow: 0 1px 1px rgba(0 0 0 / 12%);
@@ -9,5 +14,82 @@
 .inner {
     height: 100%;
     width: var(--default-layout-width);
-    background-color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+}
+
+.search {
+    width: 361px;
+    height: var(--search-height);
+    background-color: rgba(22, 24, 35, 0.06);
+    border-radius: var(--search-border-radius);
+    border: 1.5px solid transparent;
+    padding-left: var(--search-input-padding);
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    &::after {
+        content: '';
+        width: 1px;
+        height: calc(var(--search-height) - (9px * 2));
+        position: absolute;
+        top: 9px;
+        right: var(--search-btn-width);
+        background-color: rgba(22, 24, 35, 0.12);
+    }
+
+    input {
+        flex: 1;
+        // width: calc(100% - var(--search-btn-width));
+        height: 100%;
+        font-size: 1.6rem;
+        color: var(--black);
+        background-color: transparent;
+        caret-color: var(--primary);
+    }
+
+    input:not(:placeholder-shown) ~ .search-btn {
+        color: rgba(22, 24, 35, 0.74);
+    }
+
+    &:focus-within:not(:has(.search-btn:focus)) {
+        border-color: rgba(22, 24, 35, 0.2);
+    }
+}
+
+.clear,
+.loading {
+    font-size: 1.6rem;
+    position: absolute;
+    right: calc(var(--search-btn-width) + var(--search-input-padding));
+    color: rgba(22, 24, 35, 0.34);
+}
+
+.search-btn {
+    width: var(--search-btn-width);
+    height: 100%;
+    border-top-right-radius: var(--search-border-radius);
+    border-bottom-right-radius: var(--search-border-radius);
+    font-size: 1.8rem;
+    color: rgba(22, 24, 35, 0.34);
+
+    &:hover {
+        background-color: rgba(22, 24, 35, 0.03);
+        cursor: pointer;
+    }
+
+    &:active {
+        background-color: rgba(22, 24, 35, 0.06);
+    }
+}
+
+.action {
+    min-width: 150px;
+    background-color: #b8b8b8;
 }
