@@ -3,6 +3,7 @@
     --search-height: 46px;
     --search-btn-width: 52px;
     --search-input-padding: 12px;
+    --search-width: 361px;
 
     width: 100%;
     height: var(--default-layout-header-height);
@@ -23,8 +24,17 @@
     display: flex;
 }
 
+.search-result {
+    width: var(--search-width);
+}
+.search-title {
+    padding: 0 16px;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: rgba(22, 24, 35, 0.5);
+}
 .search {
-    width: 361px;
+    width: var(--search-width);
     height: var(--search-height);
     background-color: rgba(22, 24, 35, 0.06);
     border-radius: var(--search-border-radius);
@@ -90,6 +100,6 @@
 }
 
 .action {
-    min-width: 150px;
-    background-color: #b8b8b8;
+    display: flex;
+    flex-direction: row;
 }
