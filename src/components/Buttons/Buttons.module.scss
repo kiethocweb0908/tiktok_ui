@@ -11,6 +11,7 @@
     font-size: 1.6rem;
     font-weight: 700;
     background-color: var(--white);
+    color: #333;
 
     user-select: none;
     cursor: pointer;
@@ -76,4 +77,9 @@
 .icon + .title,
 .title + .icon {
     margin-left: 8px;
+}
+
+.icon {
+    width: 24px;
+    text-align: left;
 }

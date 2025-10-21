@@ -7,7 +7,7 @@ const cx = classNames.bind(styles);
 function Buttons({
     to,
     href,
-    type = 'primary', // 'primary' | 'outline' | 'text' | 'rounded'
+    type = false, // 'primary' | 'outline' | 'text' | 'rounded'
     size = 'medium', // 'small' | 'large'
     disable = false,
     leftIcon = false,

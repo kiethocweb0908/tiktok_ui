@@ -11,6 +11,12 @@ import {
     faGlassMartini,
     faMagnifyingGlass,
     faRightToBracket,
+    faEllipsisV,
+    faLanguage,
+    faQuestion,
+    faKeyboard,
+    faQuestionCircle,
+    faCircleQuestion,
 } from '@fortawesome/free-solid-svg-icons';
 
 import Tippy from '@tippyjs/react/headless';
@@ -18,8 +24,52 @@ import Tippy from '@tippyjs/react/headless';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import Buttons from '~/components/Buttons';
+import Menu from '~/components/Popper/Menu';
+import { icon } from '@fortawesome/fontawesome-svg-core';
 
 const cx = classNames.bind(styles);
+
+const MENU_ITEMS = [
+    {
+        icon: <FontAwesomeIcon icon={faLanguage} />,
+        title: 'English',
+        children: {
+            title: 'Language',
+            data: [
+                {
+                    type: 'Language',
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    type: 'Language',
+                    code: 'vi',
+                    title: 'Vietnames',
+                },
+                {
+                    type: 'Language',
+                    code: 'fr',
+                    title: 'French',
+                },
+                {
+                    type: 'Language',
+                    code: 'de',
+                    title: 'German',
+                },
+            ],
+        },
+    },
+    {
+        icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+        title: 'Feedback and help',
+        to: '/feedback',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faKeyboard} />,
+        title: 'Keyboard shortcuts',
+    },
+];
+
 function Header() {
     const [searchResult, setSearchResult] = useState([]);
 
@@ -28,6 +78,12 @@ function Header() {
             setSearchResult([]);
         }, 0);
     }, []);
+
+    // Handle logic
+    const handleMenuChange = (MenuItem) => {
+        console.log(MenuItem);
+    };
+
     return (
         <div className={cx('wrapper')}>
             <div className={cx('inner')}>
@@ -35,14 +91,14 @@ function Header() {
                     <img src={images.logo} alt="Tiktok" />
                 </div>
 
+                {/*  */}
                 <Tippy
-                    visible={searchResult.length > 0}
+                    // visible={searchResult.length > 0}
                     interactive
                     render={(attrs) => (
                         <div className={cx('search-result')} tabIndex="-1" {...attrs}>
                             <PopperWrapper>
                                 <h4 className={cx('search-title')}>Accounts</h4>
-                                <AccountItem />
                                 <AccountItem />
                                 <AccountItem />
                                 <AccountItem />
@@ -67,6 +123,13 @@ function Header() {
                     <Buttons type="primary" size="" rightIcon={<FontAwesomeIcon icon={faRightToBracket} />}>
                         Log in
                     </Buttons>
+
+                    {/*  */}
+                    <Menu items={MENU_ITEMS} onChange={handleMenuChange}>
+                        <button className={cx('more-btn')}>
+                            <FontAwesomeIcon icon={faEllipsisV} />
+                        </button>
+                    </Menu>
                 </div>
             </div>
         </div>
