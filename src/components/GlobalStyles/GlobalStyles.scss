@@ -46,3 +46,8 @@ a[href] {
     // color: var(--text-color);
     text-decoration: none;
 }
+
+//custum tippy
+body .tippy-box {
+    border-color: red;
+}

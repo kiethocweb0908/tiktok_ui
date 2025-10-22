@@ -3,7 +3,7 @@ import styles from './Menu.module.scss';
 import { Wrapper as PopperWrapper } from '../';
 import AccountItem from '~/components/AccountItem';
 import MenuItem from './MenuItem';
-import Tippy from '@tippyjs/react/headless';
+import HandlessTippy from '@tippyjs/react/headless';
 import Header from './Header';
 import { useState } from 'react';
 
@@ -34,7 +34,7 @@ function Menu({ children, items = [], onChange = () => {} }) {
     };
 
     return (
-        <Tippy
+        <HandlessTippy
             // visible
             interactive
             placement="top-end"
@@ -54,9 +54,10 @@ function Menu({ children, items = [], onChange = () => {} }) {
                     </PopperWrapper>
                 </div>
             )}
+            onHide={() => setHistory((prev) => prev.slice(0, 1))}
         >
             {children}
-        </Tippy>
+        </HandlessTippy>
     );
 }
 
